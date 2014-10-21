@@ -39,4 +39,5 @@
 @interface MKToggleButton : UIButton
 /** Set to `YES` to draw a rounded rect border around the button. */
 @property (nonatomic) BOOL showsBorder;
+@property (nonatomic) CGFloat borderWidth;
 @end
