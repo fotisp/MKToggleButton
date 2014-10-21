@@ -28,7 +28,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    self.path.lineWidth = [self.window.screen scale];
+    self.path.lineWidth = _borderWidth;
     [self.tintColor setStroke];
     [self.path stroke];
 }
@@ -43,7 +43,8 @@
 
 - (void) commonInit
 {
-    [self.titleLabel setFont:[UIFont systemFontOfSize:[UIFont systemFontSize]]];
+    //dont override the font
+    //[self.titleLabel setFont:[UIFont systemFontOfSize:[UIFont systemFontSize]]];
     [self addTarget:self action:@selector(changed:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBezierPath* path = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(4., 4.)];
