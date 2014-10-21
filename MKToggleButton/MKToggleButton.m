@@ -24,7 +24,31 @@
 @property (nonatomic, strong) UIBezierPath* path;
 @end
 
-@implementation RoundView
+@implementation RoundView {
+    CGFloat _borderWidth;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame andBorderWidth:(CGFloat)border {
+    self = [super initWithFrame:frame];
+    if (self) {
+
+        _borderWidth = border;
+    }
+
+    return self;
+}
+
+
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if (self) {
+
+        _borderWidth = 1.0f;
+    }
+
+    return self;
+}
+
 
 - (void)drawRect:(CGRect)rect
 {
@@ -52,7 +76,7 @@
     mask.path = path.CGPath;
     self.layer.mask = mask;
     
-    _borderView = [[RoundView alloc] initWithFrame:self.bounds];
+    _borderView = [[RoundView alloc] initWithFrame:self.bounds andBorderWidth:_borderWidth];
     _borderView.backgroundColor = [UIColor clearColor];
     _borderView.userInteractionEnabled =NO;
     ((RoundView*)_borderView).path = path;
